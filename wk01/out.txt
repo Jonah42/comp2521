@@ -1,4 +1,4 @@
 Number of args: 3
 Argument 0 is ./q3
-Argument 1 is Hello
-Argument 2 is w o r l d!
+Argument 1 is hello
+Argument 2 is world
