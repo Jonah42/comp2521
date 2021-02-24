@@ -28,24 +28,31 @@ void show(List l) {
 }
 
 int listLength(List l) {
-	return 0;
+	//base case
+	if (l == NULL) return 0;
+	//general case
+	return 1 + listLength(l->next);
 }
 
 int listCountOdds(List l) {
-	return 0;
+	//base case
+	if (l == NULL) return 0;
+	return (l->data % 2 != 0 ? 1 : 0) + listCountOdds(l->next);
 }
 
 bool listIsSorted(List l) {
-	return false;
+	if (l == NULL || l->next == NULL) return true;
+	return l->data <= l->next->data && listIsSorted(l->next);
 }
 
 int main(int argc, char* argv[]) {
-	List l;
+	List l = NULL;
 	for (int i = argc - 1; i > 0; i--) l = append(l, atoi(argv[i]));
 	show(l);
 	int length = listLength(l);
 	int odds = listCountOdds(l);
 	bool isSorted = listIsSorted(l);
+	printf("Hello\n");
 	printf("Length: %d\nOdds: %d\nSorted: %s\n", length, odds, isSorted?"Yes":"No");
 	return 0;
 }
