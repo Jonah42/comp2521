@@ -7,27 +7,44 @@ typedef struct node BSTNode;
 typedef Tree BSTree;
 
 int BSTreeNumNodes(BSTree t) {
-	return 0;
+	if (t == NULL) return 0;
+	return 1 + BSTreeNumNodes(t->left) + BSTreeNumNodes(t->right);
 }
 
 int BSTreeCountOdds(BSTree t) {
-	return 0;
+	if (t == NULL) return 0;
+	return (t->value % 2 != 0 ? 1 : 0) + BSTreeCountOdds(t->left) + BSTreeCountOdds(t->right);
 }
 
 int BSTreeHeight(BSTree t) {
-	return 0;
+	if (t == NULL) return 0;
+	int leftHeight = BSTreeHeight(t->left);
+	int rightHeight = BSTreeHeight(t->right);
+	return 1 + (leftHeight > rightHeight ? leftHeight : rightHeight);
 }
 
 int BSTreeCountInternal(BSTree t) {
-	return 0;
+	if (t == NULL) return 0;
+	if (t->left == NULL && t->right == NULL) return 0;
+	return 1 + BSTreeCountInternal(t->left) + BSTreeCountInternal(t->right);
 }
 
 int BSTreeNodeDepth(BSTree t, int key) {
+	if (t == NULL) return -1;
+	if (key < t->value) {
+		int depth = BSTreeNodeDepth(t->left, key);
+		return depth == -1 ? -1 : 1 + depth;
+	} else if (key > t->value) {
+		int depth = BSTreeNodeDepth(t->right, key);
+		return depth == -1 ? -1 : 1 + depth;
+	}
 	return 0;
 }
 
 int BSTreeCountGreater(BSTree t, int key) {
-	return 0;
+	if (t == NULL) return 0;
+	if (t->value <= key) return BSTreeCountGreater(t->right, key);
+	return 1 + BSTreeCountGreater(t->left, key) + BSTreeCountGreater(t->right, key);
 }
 
 BSTree createNode(int value) {
