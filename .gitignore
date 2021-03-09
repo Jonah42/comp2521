@@ -1,4 +1,6 @@
 *.exe
+*.o
+*.s
 hack.c
 pointers.c
 out.txt
