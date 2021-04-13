@@ -34,7 +34,17 @@ void swap(List l1, List l2) {
 }
 
 List selectionSort(List ls) {
-	
+	List iCurr = ls, jCurr = NULL, min = NULL;
+	while (iCurr != NULL) {
+		min = iCurr;
+		jCurr = iCurr->next;
+		while (jCurr != NULL) {
+			if (less(jCurr,min)) min = jCurr;
+			jCurr = jCurr->next;
+		}
+		swap(iCurr, min);
+		iCurr = iCurr->next;
+	}
 	return NULL;
 }
 

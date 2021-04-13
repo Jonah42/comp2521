@@ -13,7 +13,17 @@ int itemCmp(const void* a, const void* b) {
 }
 
 int isStableSort(Item original[], Item sorted[], int size) {
-	
+	int* seen = calloc(size, sizeof(int));
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (original[j].a == sorted[i].a && !seen[j]) {
+				if (original[j].b != sorted[i].b)
+					return 0;
+				seen[j] = 1;
+				break;
+			}
+		}
+	}
 	return 1;
 }
 
