@@ -12,7 +12,7 @@ void swap(int *a, int *b) {
 void shellSort(int a[], int lo, int hi) {
    int hvals[8] = {701, 301, 132, 57, 23, 10, 4, 1};
    int g, h, start, i, j, val;
-   printf("\nIn sort\n");
+   // printf("\nIn sort\n");
    for (g = 0; g < 8; g++) {
       h = hvals[g];
       start = lo + h;
@@ -24,9 +24,9 @@ void shellSort(int a[], int lo, int hi) {
          }
          a[j] = val;
       }
-      printArray(a, 10);
+      // printArray(a, 10);
    }
-   printf("Finished sort\n\n");
+   // printf("Finished sort\n\n");
 }
 
 void printArray(int a[], int n) {
@@ -62,13 +62,15 @@ void permutation(int correct[], int a[], int start, int end) {
     }
 }
 
+// Finds all permutations of array a and executes shellsort on them.
+// Prints out if there's an error
 int main(void) {
-   int a[10] = {5,3,9,6,4,2,9,8,1,7};
+   // int a[10] = {5,3,9,6,4,2,9,8,1,7};
    int correct[10] = {0,1,2,3,4,5,6,7,8,9};
-   // int a[10] = {0,1,2,3,4,5,6,7,8,9};
-   // permutation(correct, a, 0, 9);
-   printArray(a, 10);
-   shellSort(a,0,9);
-   printArray(a, 10);
+   int a[10] = {0,1,2,3,4,5,6,7,8,9};
+   permutation(correct, a, 0, 9);
+   // printArray(a, 10);
+   // shellSort(a,0,9);
+   // printArray(a, 10);
    return 0;
 }
